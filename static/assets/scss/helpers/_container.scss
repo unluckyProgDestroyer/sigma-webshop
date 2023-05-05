@@ -1,0 +1,33 @@
+$responsiveContainerPadding: (
+    horizontal: clamp(0.75rem, -2.344rem + 8.594vw, 6.25rem),
+    horizontalSmall: 1.5rem,
+);
+
+@function responsiveContainerPadding($padding) {
+    @return map-get($responsiveContainerPadding, $padding);
+}
+
+.container {
+    width: 100%;
+    flex: 1 0 auto;
+    padding-right: responsiveContainerPadding(horizontalSmall) * 0.5;
+    padding-left: responsiveContainerPadding(horizontalSmall) * 0.5;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
+    .container {
+        padding-left: responsiveContainerPadding(horizontal);
+        padding-right: responsiveContainerPadding(horizontal);
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1400px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
