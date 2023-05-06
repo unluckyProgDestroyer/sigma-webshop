@@ -1,6 +1,94 @@
-@use "helpers/1-helpers" as *;
-@use "modules/2-modules" as *;
+@use "helpers/variables" as *;
+
+:root {
+    //bootstrap reboot smooth scroll behavior overwrite fix
+    scroll-behavior: auto;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: darkColor(primary);
+}
+
+// --webkit section start
+::selection {
+    color: darkColor(selectionColor);
+    background: darkColor(selectionBackgroundColor);
+}
+
+::-webkit-calendar-picker-indicator {
+    display: none;
+}
+// --webkit section end
+
+// bootstrap "reboot shitty fixes" fix start
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+button:focus:not(:focus-visible) {
+    outline-color: transparent;
+}
+// bootstrap "reboot shitty fixes" fix end
+
+// material icons user select disable
+.material-symbols-rounded {
+    user-select: none;
+}
+// material icons user select disable
+
+@import "modules/2-modules";
+@import "pages/3-pages";
+
+input::placeholder {
+    color: darkColor(fontColorDisabled);
+}
 
 h1 {
     color: rgb(207, 111, 111);
+}
+
+@media screen and (min-width: 992px) and (hover: hover) and (pointer: fine) {
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: darkColor(webkitScrollbarTrackColor);
+        border-radius: 15px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: darkColor(webkitScrollbarThumbColor);
+        border-radius: 15px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: darkColor(webkitScrollbarThumbHoverColor);
+    }
 }

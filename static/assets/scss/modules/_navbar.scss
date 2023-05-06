@@ -1,0 +1,370 @@
+// @use "../helpers/variables" as *;
+
+// .navbar {
+//     position: relative;
+//     padding-top: 2.2rem;
+//     padding-bottom: 2.2rem;
+
+//     &__outer-container {
+//         width: 100%;
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+//         flex-wrap: wrap;
+//     }
+
+//     &__logo {
+//         text-decoration: none;
+//         white-space: nowrap;
+//         outline: 2px solid;
+//         outline-color: rgba(0, 0, 0, 0);
+//         outline-offset: 3px;
+//         transition: outline-color 100ms ease-in;
+//     }
+
+//     &__inner-container {
+//         height: 0px;
+//         display: flex;
+//         flex: 1 0 100%;
+//         justify-content: flex-end;
+
+//         will-change: height;
+//         transition: height 500ms linear;
+
+//         &.open {
+//             height: auto;
+//         }
+//     }
+
+//     &__toggler {
+//         background-color: transparent;
+//         border: none;
+//         box-shadow: none;
+//     }
+
+//     &__nav {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: flex-end;
+//         flex-wrap: wrap;
+//         margin-top: 2rem;
+//     }
+
+//     &__link {
+//         position: relative;
+//         margin-top: 0.4rem;
+//         color: darkColor(fontColorDisabled);
+//         font-size: fontSize(navInactive);
+//         font-weight: 400;
+//         text-decoration: none;
+//         outline: 2px solid;
+//         outline-color: transparent;
+//         outline-offset: 3px;
+//         transition: color 100ms ease-in, outline-color 100ms ease-in;
+
+//         &:hover,
+//         &:focus,
+//         &:active {
+//             color: darkColor(fontColor);
+//         }
+
+//         &:focus-visible {
+//             outline: 2px solid darkColor(focusOutlineColorPrimary);
+
+//             &.navbar__link-active::after {
+//                 content: none !important;
+//                 transition: none !important;
+//             }
+//         }
+
+//         &:not(.navbar__link-active):hover,
+//         &:not(.navbar__link-active):focus,
+//         &:not(.navbar__link-active):active {
+//             color: darkColor(fontColorDisabled);
+//         }
+
+//         &-active {
+//             color: darkColor(fontColor);
+//             font-size: fontSize(navActive);
+//             font-weight: 500;
+//         }
+//     }
+// }
+
+// @media screen and (min-width: 992px) {
+//     .navbar {
+//         &__outer-container {
+//             flex-wrap: nowrap;
+//         }
+
+//         &__inner-container {
+//             flex-basis: auto;
+//         }
+
+//         &__nav {
+//             margin-top: 0;
+//             align-items: center;
+//             flex-direction: row;
+//         }
+
+//         &__link {
+//             font-size: fontSize(navInactiveFrom992);
+
+//             &:not(:last-of-type) {
+//                 margin-right: 1em;
+//             }
+
+//             &-active {
+//                 position: relative;
+//                 color: darkColor(fontColor);
+//                 font-size: fontSize(navActiveFrom992);
+//                 font-weight: 500;
+//             }
+//         }
+//     }
+// }
+
+// // navbar hover effect on hoverable devices
+// @media screen and (min-width: 992px) and (hover: hover) and (pointer: fine) {
+//     ::-webkit-scrollbar {
+//         width: 5px;
+//         height: 7px;
+//     }
+
+//     ::-webkit-scrollbar-track {
+//         background: darkColor(webkitScrollbarTrackColor);
+//         border-radius: 10px;
+//     }
+
+//     ::-webkit-scrollbar-thumb {
+//         background: darkColor(webkitScrollbarThumbColor);
+//         border-radius: 10px;
+//     }
+
+//     ::-webkit-scrollbar-thumb:hover {
+//         background: darkColor(webkitScrollbarThumbHoverColor);
+//     }
+
+//     .navbar {
+//         &__link {
+//             &:hover,
+//             &:focus,
+//             &:active {
+//                 color: darkColor(fontColor);
+//             }
+
+//             &:not(.navbar__link-active):hover,
+//             &:not(.navbar__link-active):focus,
+//             &:not(.navbar__link-active):active {
+//                 color: darkColor(fontColor);
+//             }
+
+//             &:not(.navbar__link-active)::after {
+//                 content: "";
+//                 position: absolute;
+//                 width: 100%;
+//                 bottom: 0;
+//                 left: 0;
+//                 height: 1px;
+//                 border-radius: 5px;
+//                 background-color: darkColor(accent);
+//                 transform: scaleX(0);
+//                 transition: transform 150ms ease-in;
+//                 transform-origin: right;
+//             }
+
+//             &:not(.navbar__link-active):hover::after {
+//                 transform: scaleX(1);
+//                 transform-origin: left;
+//             }
+
+//             &-active {
+//                 position: relative;
+//                 color: darkColor(fontColor);
+//                 font-weight: 500;
+
+//                 &::after {
+//                     content: "";
+//                     position: absolute;
+//                     height: 1px;
+//                     width: 100%;
+//                     bottom: 0;
+//                     left: 50%;
+//                     transform: translateX(-50%);
+//                     background-color: darkColor(accent);
+//                     border-radius: 5px;
+//                 }
+//             }
+//         }
+//     }
+// }
+// // navbar hover effect on hoverable devices
+
+.navbar-toggler {
+    color: darkColor(primary);
+    background-color: darkColor(hamburgerTogglerButtonBackgroundColor);
+    border-color: darkColor(hamburgerTogglerButtonBorder);
+
+    &:focus {
+        box-shadow: 0 0 0 darkColor(navbarTogglerFocusWidth);
+    }
+}
+
+.navbar-toggler-icon {
+    background-image: darkColor(navbarTogglerIconBg);
+}
+
+.navbar {
+    padding-top: 2.2rem;
+    padding-bottom: 2.2rem;
+
+    &-brand {
+        font-family: "Bruno Ace SC", cursive;
+        outline: 2px solid;
+        outline-color: transparent;
+        outline-offset: 3px;
+        transition: outline-color 100ms ease-in;
+
+        &:focus-visible {
+            outline: 2px solid darkColor(focusOutlineColorPrimary);
+            outline-offset: 3px;
+        }
+
+        &.logo {
+            font-size: clamp(2rem, 1.431rem + 2.759vw, 3.5rem);
+        }
+    }
+
+    &__collapse {
+        justify-content: flex-end;
+    }
+
+    &__nav {
+        margin-top: 2rem;
+        align-items: flex-end;
+
+        &.navbar__single--item {
+            margin-top: 0;
+        }
+    }
+
+    &__link {
+        position: relative;
+        margin-top: 0.4rem;
+        color: darkColor(fontColorDisabled);
+        font-size: fontSize(navInactive);
+        font-weight: 500;
+        outline: 2px solid;
+        outline-color: transparent;
+        outline-offset: 3px;
+        transition: color 100ms ease-in, outline-color 100ms ease-in;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: darkColor(fontColor);
+        }
+
+        &:focus-visible {
+            outline: 2px solid darkColor(focusOutlineColorPrimary);
+
+            &.navbar__link-active::after {
+                content: none !important;
+                transition: none !important;
+            }
+        }
+
+        &:not(.navbar__link-active):hover,
+        &:not(.navbar__link-active):focus,
+        &:not(.navbar__link-active):active {
+            color: darkColor(fontColorDisabled);
+        }
+
+        &-active {
+            color: darkColor(fontColor);
+            font-size: fontSize(navActive);
+            font-weight: 500;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .navbar {
+        &__nav {
+            margin-top: 0;
+            align-items: center;
+        }
+
+        &__link {
+            font-size: fontSize(navInactiveFrom992);
+
+            &:not(:last-of-type) {
+                margin-right: 1em;
+            }
+
+            &-active {
+                position: relative;
+                color: darkColor(fontColor);
+                font-size: fontSize(navActiveFrom992);
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+// navbar hover effect on hoverable devices
+@media screen and (min-width: 992px) and (hover: hover) and (pointer: fine) {
+    .navbar {
+        &__link {
+            &:hover,
+            &:focus,
+            &:active {
+                color: darkColor(fontColor);
+            }
+
+            &:not(.navbar__link-active):hover,
+            &:not(.navbar__link-active):focus,
+            &:not(.navbar__link-active):active {
+                color: darkColor(fontColor);
+            }
+
+            &:not(.navbar__link-active)::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                left: 0;
+                height: 2px;
+                border-radius: 5px;
+                background-color: darkColor(accent);
+                transform: scaleX(0);
+                transition: transform 150ms ease-in;
+                transform-origin: right;
+            }
+
+            &:not(.navbar__link-active):hover::after {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+
+            &-active {
+                position: relative;
+                color: darkColor(fontColor);
+                font-weight: 500;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    height: 2px;
+                    width: 100%;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: darkColor(accent);
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+}
+// navbar hover effect on hoverable devices

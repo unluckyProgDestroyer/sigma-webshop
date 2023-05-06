@@ -10,8 +10,10 @@ $responsiveContainerPadding: (
 .container {
     width: 100%;
     flex: 1 0 auto;
-    padding-right: responsiveContainerPadding(horizontalSmall) * 0.5;
     padding-left: responsiveContainerPadding(horizontalSmall) * 0.5;
+    padding-right: responsiveContainerPadding(horizontalSmall) * 0.5;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media (min-width: 576px) {
