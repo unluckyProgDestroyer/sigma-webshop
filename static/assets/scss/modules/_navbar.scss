@@ -316,6 +316,8 @@
 @media screen and (min-width: 992px) and (hover: hover) and (pointer: fine) {
     .navbar {
         &__link {
+            transition: transform 90ms ease-in;
+
             &:hover,
             &:focus,
             &:active {
@@ -345,6 +347,10 @@
             &:not(.navbar__link-active):hover::after {
                 transform: scaleX(1);
                 transform-origin: left;
+            }
+
+            &:not(.navbar__link-active):active {
+                transform: scale(0.93);
             }
 
             &-active {

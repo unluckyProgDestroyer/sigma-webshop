@@ -1,8 +1,8 @@
 $fontSize: (
-    h1: clamp(1.2rem, 0.203rem + 4.834vw, 3.2rem),
-    h3: clamp(1.1rem, 0.801rem + 1.45vw, 1.7rem),
-    body: clamp(0.9rem, 0.85rem + 0.242vw, 1rem),
-    medium: clamp(0.8rem, 0.75rem + 0.242vw, 0.9rem),
+    h1: clamp(1.5rem, 0.653rem + 4.109vw, 3.2rem),
+    h3: clamp(1.3rem, 1.101rem + 0.967vw, 1.7rem),
+    body: clamp(1rem, 0.95rem + 0.242vw, 1.1rem),
+    medium: clamp(0.8rem, 0.7rem + 0.483vw, 1rem),
     // small: var(--font-small),
     primary: clamp(0.9rem, 0.8rem + 0.483vw, 1.1rem),
     secondary: clamp(0.85rem, 0.775rem + 0.363vw, 1rem),
@@ -21,7 +21,7 @@ $fontSize: (
 $darkColors: (
     primary: #fdfbf7,
     secondary: #fdf5e3,
-    secondaryDark: #f4f0e6,
+    secondaryDark: #f2f0e9,
     accent: #282828,
     buttonHover: #333333,
     fontColor: #333333,

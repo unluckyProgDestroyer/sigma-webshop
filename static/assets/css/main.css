@@ -193,6 +193,12 @@ button:focus:not(:focus-visible) {
   }
 }
 @media screen and (min-width: 992px) and (hover: hover) and (pointer: fine) {
+  .navbar__link {
+    -webkit-transition: -webkit-transform 90ms ease-in;
+    transition: -webkit-transform 90ms ease-in;
+    transition: transform 90ms ease-in;
+    transition: transform 90ms ease-in, -webkit-transform 90ms ease-in;
+  }
   .navbar__link:hover, .navbar__link:focus, .navbar__link:active {
     color: #333333;
   }
@@ -223,6 +229,10 @@ button:focus:not(:focus-visible) {
     -webkit-transform-origin: left;
             transform-origin: left;
   }
+  .navbar__link:not(.navbar__link-active):active {
+    -webkit-transform: scale(0.93);
+            transform: scale(0.93);
+  }
   .navbar__link-active {
     position: relative;
     color: #333333;
@@ -247,7 +257,7 @@ button:focus:not(:focus-visible) {
 .headline__h1 {
   text-align: center;
   color: #333333;
-  font-size: clamp(1.2rem, 0.203rem + 4.834vw, 3.2rem);
+  font-size: clamp(1.5rem, 0.653rem + 4.109vw, 3.2rem);
   font-weight: 700;
 }
 
@@ -686,7 +696,7 @@ button:focus:not(:focus-visible) {
 .input__label {
   margin-bottom: 0.3rem;
   color: #595959;
-  font-size: clamp(0.8rem, 0.75rem + 0.242vw, 0.9rem);
+  font-size: clamp(0.8rem, 0.7rem + 0.483vw, 1rem);
 }
 .input__inner-container {
   display: -webkit-box;
@@ -697,8 +707,8 @@ button:focus:not(:focus-visible) {
           align-items: center;
   padding-left: clamp(1.2rem, 1.1rem + 0.483vw, 1.4rem);
   padding-right: clamp(1.2rem, 1.1rem + 0.483vw, 1.4rem);
-  background-color: #f4f0e6;
-  outline: 2px solid #f4f0e6;
+  background-color: #f2f0e9;
+  outline: 2px solid #f2f0e9;
   -webkit-transition: outline 100ms ease-in;
   transition: outline 100ms ease-in;
 }
@@ -709,8 +719,8 @@ button:focus:not(:focus-visible) {
   padding-left: clamp(0.8rem, 0.7rem + 0.483vw, 1rem);
   padding-right: clamp(1.2rem, 1.1rem + 0.483vw, 1.4rem);
   color: #333333;
-  background-color: #f4f0e6;
-  font-size: clamp(0.9rem, 0.85rem + 0.242vw, 1rem);
+  background-color: #f2f0e9;
+  font-size: clamp(1rem, 0.95rem + 0.242vw, 1.1rem);
   line-height: initial;
   border: none;
   outline: none;
@@ -790,7 +800,7 @@ button:focus:not(:focus-visible) {
   display: none;
   margin-top: 0.5rem;
   color: var(--fail-color);
-  font-size: clamp(0.8rem, 0.75rem + 0.242vw, 0.9rem);
+  font-size: clamp(0.8rem, 0.7rem + 0.483vw, 1rem);
   font-style: italic;
 }
 .input__required--star {
