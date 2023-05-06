@@ -1,0 +1,36 @@
+// .card {
+//     &__outer-container {
+//         display: flex;
+//         flex-direction: column;
+//         gap: 0 2rem;
+//     }
+
+//     &__left-column {
+//         width: 100%;
+//     }
+
+//     &__right-column {
+//         display: flex;
+//         flex-direction: column;
+//         width: 100%;
+//     }
+// }
+
+// @media screen and (min-width: 768px) {
+//     .card {
+//         &__outer-container {
+//             display: flex;
+//             flex-direction: column;
+//             gap: 0 2rem;
+//         }
+
+//         &__left-column {
+//             width: 30%;
+//         }
+
+//         &__right-column {
+//             flex-direction: row;
+//             width: 70%;
+//         }
+//     }
+// }

@@ -72,6 +72,10 @@ h1 {
     color: rgb(207, 111, 111);
 }
 
+.main__section {
+    margin-top: clamp(6rem, 4.505rem + 7.251vw, 9rem);
+}
+
 @media screen and (min-width: 992px) and (hover: hover) and (pointer: fine) {
     ::-webkit-scrollbar {
         width: 8px;
