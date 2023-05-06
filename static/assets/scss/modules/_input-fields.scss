@@ -1,0 +1,273 @@
+// @use "../helpers/variables" as *;
+
+.input {
+    &__field-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        &.dateTime--active {
+            .input__icon-date {
+                color: darkColor(fontColor);
+            }
+
+            .input__input-field--dateTime {
+                color: darkColor(fontColor);
+            }
+        }
+
+        &:focus-within {
+            .input {
+                &__inner-container {
+                    outline: 2px solid darkColor(accent);
+                }
+
+                &__icon {
+                    &-left {
+                        color: darkColor(fontColor);
+                    }
+
+                    &-date {
+                        &:hover {
+                            color: darkColor(fontColor);
+                        }
+
+                        &:active {
+                            color: darkColor(fontColorDisabled);
+                        }
+                    }
+                }
+
+                &__input-field {
+                    color: darkColor(fontColor);
+
+                    &:focus {
+                        color: darkColor(fontColor);
+                    }
+
+                    &:active {
+                        color: darkColor(fontColor);
+                    }
+                }
+            }
+        }
+    }
+
+    &__label {
+        margin-bottom: 0.3rem;
+        color: darkColor(fontColorDisabled);
+        font-size: fontSize(medium);
+    }
+
+    &__inner-container {
+        display: flex;
+        align-items: center;
+        padding-left: clamp(1.2rem, 1.1rem + 0.483vw, 1.4rem);
+        padding-right: clamp(1.2rem, 1.1rem + 0.483vw, 1.4rem);
+        background-color: darkColor(secondaryDark);
+        outline: 2px solid darkColor(secondaryDark);
+        transition: outline 100ms ease-in;
+    }
+
+    &__input-field {
+        width: 100%;
+        padding-top: clamp(0.7rem, 0.6rem + 0.483vw, 0.9rem);
+        padding-bottom: clamp(0.7rem, 0.6rem + 0.483vw, 0.9rem);
+        padding-left: clamp(0.8rem, 0.7rem + 0.483vw, 1rem);
+        padding-right: clamp(1.2rem, 1.1rem + 0.483vw, 1.4rem);
+        color: darkColor(fontColor);
+        background-color: darkColor(secondaryDark);
+        font-size: fontSize(body);
+        line-height: initial;
+        border: none;
+        outline: none;
+        transition: color 100ms ease-in;
+
+        &::placeholder {
+            color: darkColor(inputPlaceHolder);
+            user-select: none;
+        }
+
+        &--dateTime {
+            color: darkColor(fontColorDisabled);
+            padding-top: clamp(0.7rem, 0.6rem + 0.483vw, 0.9rem);
+            padding-bottom: clamp(0.7rem, 0.6rem + 0.483vw, 0.9rem);
+        }
+    }
+
+    &__icon {
+        // single or both icon type modifiers
+        &-type {
+            &--single {
+                .input__input-field {
+                    padding-left: 0;
+                }
+
+                .input__icon-left {
+                    display: none;
+                }
+            }
+
+            &--both {
+                .input__icon-left {
+                    display: block;
+                }
+
+                .input__icon-right--visibility {
+                    display: block;
+                }
+            }
+        }
+        // single or both icon type modifiers
+
+        &-left {
+            color: darkColor(fontColorDisabled);
+            font-size: clamp(1.25rem, 1.063rem + 0.906vw, 1.625rem);
+            transition: color 100ms ease-in;
+        }
+
+        &-right {
+            display: none;
+            font-size: clamp(1.15rem, 0.976rem + 0.846vw, 1.5rem);
+        }
+
+        &-right--visibility {
+            color: darkColor(fontColorDisabled);
+            font-size: clamp(1.25rem, 1.063rem + 0.906vw, 1.625rem);
+            transition: color 100ms ease-in;
+        }
+
+        &-date {
+            cursor: pointer;
+
+            &:hover,
+            &:focus {
+                color: darkColor(fontColor);
+            }
+
+            &:active {
+                color: darkColor(fontColorDisabled);
+            }
+        }
+    }
+
+    &__error-message {
+        display: none;
+        margin-top: 0.5rem;
+        color: darkColor(failColor);
+        font-size: fontSize(medium);
+        font-style: italic;
+    }
+
+    &__required {
+        &--star {
+            color: var(--font-color-disabled);
+            font-size: clamp(0.9rem, 0.85rem + 0.242vw, 1rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1;
+        }
+
+        &--text {
+            font-size: clamp(0.7rem, 0.625rem + 0.363vw, 0.85rem);
+        }
+    }
+
+    // input state modifiers
+    &__state {
+        &--focus {
+            .input {
+                &__inner-container {
+                    outline: 2px solid darkColor(accent);
+                }
+
+                &__icon {
+                    &-left {
+                        color: darkColor(fontColor);
+                    }
+
+                    &-date {
+                        &:hover {
+                            color: darkColor(fontColor);
+                        }
+
+                        &:active {
+                            color: darkColor(fontColorDisabled);
+                        }
+                    }
+                }
+
+                &__input-field {
+                    color: darkColor(fontColor);
+
+                    &:focus {
+                        color: darkColor(fontColor);
+                    }
+
+                    &:active {
+                        color: darkColor(fontColor);
+                    }
+                }
+            }
+        }
+
+        &--error {
+            .input {
+                &__label {
+                    @include errorSelection;
+                }
+
+                &__inner-container {
+                    outline: 2px solid darkColor(failColor);
+                }
+
+                &__icon {
+                    &-left {
+                        color: darkColor(failColor);
+                    }
+
+                    &-right {
+                        display: block;
+                        color: darkColor(failColor);
+                    }
+                }
+
+                &__input-field {
+                    color: darkColor(failColor);
+
+                    @include errorSelection;
+
+                    &::placeholder {
+                        color: darkColor(failColor);
+                    }
+                }
+
+                &__error-message {
+                    display: block;
+                    color: darkColor(failColor);
+
+                    @include errorSelection;
+                }
+            }
+        }
+
+        &--readonly {
+            pointer-events: none;
+            user-select: none;
+
+            .input__inner-container {
+                padding-left: 0;
+                background-color: darkColor(bg);
+                outline-color: darkColor(bg);
+            }
+
+            .input__input-field {
+                color: darkColor(fontColor);
+                background-color: darkColor(bg);
+                outline-color: darkColor(bg);
+                cursor: text;
+            }
+        }
+    }
+    // input state modifiers
+}

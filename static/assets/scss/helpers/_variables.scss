@@ -1,0 +1,70 @@
+$fontSize: (
+    h1: clamp(1.5rem, 0.653rem + 4.109vw, 3.2rem),
+    h3: clamp(1.3rem, 1.101rem + 0.967vw, 1.7rem),
+    body: clamp(1rem, 0.95rem + 0.242vw, 1.1rem),
+    medium: clamp(0.8rem, 0.7rem + 0.483vw, 1rem),
+    // small: var(--font-small),
+    primary: clamp(0.9rem, 0.8rem + 0.483vw, 1.1rem),
+    secondary: clamp(0.85rem, 0.775rem + 0.363vw, 1rem),
+    tertiary: clamp(0.8rem, 0.75rem + 0.242vw, 0.9rem),
+    navActive: clamp(0.9rem, 0.8rem + 0.483vw, 1.1rem),
+    navInactive: clamp(0.85rem, 0.775rem + 0.363vw, 1rem),
+    navActiveFrom992: clamp(0.9rem, 0.457rem + 0.714vw, 1.1rem),
+    navInactiveFrom992: clamp(0.8rem, 0.357rem + 0.714vw, 1rem),
+    formWidthFrom576: clamp(34.438rem, 18.083rem + 45.431vw, 46.25rem),
+);
+
+@function fontSize($font-size) {
+    @return map-get($fontSize, $font-size);
+}
+
+$darkColors: (
+    primary: #fdfbf7,
+    secondary: #fdf5e3,
+    secondaryDark: #f2f0e9,
+    accent: #282828,
+    buttonHover: #333333,
+    fontColor: #333333,
+    fontColorDisabled: #595959,
+    inputPlaceHolder: #808080,
+    tableRowBgLight: var(--table-row-bg-light),
+    tableRowBgDark: var(--table-row-bg-dark),
+    focusOutlineColorPrimary: var(--focus-outline-primary),
+    focusOutlineColorLight: var(--focus-outline-light),
+    selectionColor: #fdf5e3,
+    selectionBackgroundColor: #333333,
+    selectionErrorColor: var(--selection-error-color),
+    selectionErrorBackgroundColor: var(--selection-error-bg),
+    failColor: var(--fail-color),
+    greyActiveColorDarker: var(--grey-active-color-darker),
+    greyActiveColorLighter: var(--grey-active-color-lighter),
+    webkitScrollbarTrackColor: #fdfbf7,
+    webkitScrollbarThumbColor: #282828,
+    webkitScrollbarThumbHoverColor: #333333,
+    //
+    navbarTogglerFocusWidth: 0.07rem,
+    navbarTogglerIconBg:
+        url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"),
+    hamburgerTogglerButtonColor: rgba(40, 40, 40, 0.7),
+    hamburgerTogglerButtonBackgroundColor: transparent,
+    hamburgerTogglerButtonBorder: rgba(40, 40, 40, 0.7),
+);
+
+@function darkColor($color-name) {
+    @return map-get($darkColors, $color-name);
+}
+
+@mixin flexbox($type: flex, $ai: center, $jc: center, $fd: row, $fw: nowrap) {
+    display: $type;
+    align-items: $ai;
+    justify-content: $jc;
+    flex-direction: $fd;
+    flex-wrap: $fw;
+}
+
+@mixin errorSelection() {
+    &::selection {
+        color: darkColor(selectionErrorColor);
+        background-color: darkColor(selectionErrorBackgroundColor);
+    }
+}
