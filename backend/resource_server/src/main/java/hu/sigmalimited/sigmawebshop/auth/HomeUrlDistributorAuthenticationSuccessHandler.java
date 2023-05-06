@@ -22,22 +22,25 @@ import java.util.Map;
 public class HomeUrlDistributorAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
-    private RequestCache requestCache = new HttpSessionRequestCache();
+    private final RequestCache requestCache = new HttpSessionRequestCache();
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
-
+        clearAuthenticationAttributes(request);
         SavedRequest savedRequest = this.requestCache.getRequest(request, response);
 
-        if (savedRequest == null) {
+        if (savedRequest == null ) {
             handleDefaultDistribution(request, response, authentication);
-        } else {
-            String targetUrl = savedRequest.getRedirectUrl();
-            requestCache.removeRequest(request, response);
+            return;
+        }
+
+        String targetUrl = savedRequest.getRedirectUrl();
+        if (targetUrl.contains("8080/login") || targetUrl.contains("8080/logout")){
+            handleDefaultDistribution(request, response, authentication);
+        }else{
             redirectStrategy.sendRedirect(request, response, targetUrl.replace("?continue", ""));
         }
-        clearAuthenticationAttributes(request);
-
+        requestCache.removeRequest(request, response);
     }
 
     protected void handleDefaultDistribution(
