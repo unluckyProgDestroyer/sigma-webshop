@@ -60,18 +60,19 @@ public class HomeUrlDistributorAuthenticationSuccessHandler implements Authentic
     protected String determineTargetUrl(final Authentication authentication) {
 
         Map<String, String> roleTargetUrlMap = new HashMap<>();
-        roleTargetUrlMap.put("ROLE_USER", "user.html");
+        roleTargetUrlMap.put("ROLE_CUSTOMER", "/");
+        roleTargetUrlMap.put("ROLE_SUPPORT", "/support/orders");
         roleTargetUrlMap.put("ROLE_ADMIN", "/admin/home");
-
+        String targetUrl = "/";
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (final GrantedAuthority grantedAuthority : authorities) {
             String authorityName = grantedAuthority.getAuthority();
             if(roleTargetUrlMap.containsKey(authorityName)) {
-                return roleTargetUrlMap.get(authorityName);
+                targetUrl = roleTargetUrlMap.get(authorityName);
+                break;
             }
         }
-
-        throw new IllegalStateException();
+        return targetUrl;
     }
 
     protected void clearAuthenticationAttributes(HttpServletRequest request) {
