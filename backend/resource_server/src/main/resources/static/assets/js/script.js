@@ -33,6 +33,8 @@ const addProductTrigger = document.querySelector('[data-element-type="add-produc
 const closeProductContainer = document.querySelector('[data-element-type="close-product-container"]');
 const saveNewProduct = document.querySelector('[data-element-type="save-new-product"]');
 
+
+// új termék hozzáadása ablak megnyitása plusz gombra (kártya) kattintva
 addProductTrigger.addEventListener("click", function () {
     addProductContainer.classList.add("visible");
     body.style.setProperty("overflow", "hidden");
@@ -45,6 +47,7 @@ addProductTrigger.addEventListener("click", function () {
     }
 })
 
+// új termék hozzáadása ablak bezárása visszanyilas gombra kattintva
 closeProductContainer.addEventListener("click", function () {
     addProductContainer.classList.remove("visible");
     body.style.removeProperty("overflow");
@@ -55,13 +58,8 @@ closeProductContainer.addEventListener("click", function () {
     }
 })
 
+// új termék hozzáadása gombra kattintásra gombon belüli töltő animáció elindítása + overlay megjelenítése
 saveNewProduct.addEventListener("click", function () {
-    addProductContainer.classList.remove("visible");
-    body.style.removeProperty("overflow");
-
-    if (overlay.classList.contains("visible")) {
-        overlay.classList.remove("visible");
-        overlay.classList.add("hidden");
-    }
+    saveNewProduct.classList.toggle("awaiting-server-animation-open");
+    addProductContainer.classList.toggle("loading-overlay-open");
 })
-

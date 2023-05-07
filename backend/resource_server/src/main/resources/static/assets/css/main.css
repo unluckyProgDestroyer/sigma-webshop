@@ -641,15 +641,6 @@ form {
 .button-container .awaiting-server-animation {
   position: relative;
 }
-.button-container .awaiting-server-animation span {
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  opacity: 0 !important;
-  -webkit-transition: opacity 100ms ease-in, -webkit-transform 100ms ease-in !important;
-  transition: opacity 100ms ease-in, -webkit-transform 100ms ease-in !important;
-  transition: transform 100ms ease-in, opacity 100ms ease-in !important;
-  transition: transform 100ms ease-in, opacity 100ms ease-in, -webkit-transform 100ms ease-in !important;
-}
 .button-container .awaiting-server-animation::after {
   content: " ";
   position: absolute;
@@ -658,10 +649,36 @@ form {
   border-radius: 50%;
   border: 4px solid #f9f7f1;
   border-color: #f9f7f1 transparent #f9f7f1 transparent;
-  -webkit-animation: awaitingServerAnimation 1.2s linear infinite;
-          animation: awaitingServerAnimation 1.2s linear infinite;
-  -webkit-animation-delay: 100ms;
-          animation-delay: 100ms;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: opacity 100ms ease-in 100ms;
+  transition: opacity 100ms ease-in 100ms;
+  -webkit-animation: awaitingServerAnimation 1s cubic-bezier(0.68, 0.29, 0.39, 0.84) infinite;
+          animation: awaitingServerAnimation 1s cubic-bezier(0.68, 0.29, 0.39, 0.84) infinite;
+  -webkit-animation-delay: 230ms;
+          animation-delay: 230ms;
+}
+.button-container .awaiting-server-animation.awaiting-server-animation-open .loading-animation-span {
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  opacity: 0 !important;
+  -webkit-transition: opacity 200ms ease-in, -webkit-transform 200ms ease-in !important;
+  transition: opacity 200ms ease-in, -webkit-transform 200ms ease-in !important;
+  transition: transform 200ms ease-in, opacity 200ms ease-in !important;
+  transition: transform 200ms ease-in, opacity 200ms ease-in, -webkit-transform 200ms ease-in !important;
+}
+.button-container .awaiting-server-animation.awaiting-server-animation-open::after {
+  opacity: 1;
+  pointer-events: all;
+}
+.button-container .loading-animation-span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5rem;
 }
 
 @media screen and (min-width: 576px) {
@@ -769,6 +786,7 @@ form {
           align-items: center;
   padding-left: clamp(1.2rem, 1.1rem + 0.483vw, 1.4rem);
   padding-right: clamp(1.2rem, 1.1rem + 0.483vw, 1.4rem);
+  border-radius: 0.3rem;
   background-color: #f2f0e9;
   outline: 2px solid #f2f0e9;
   -webkit-transition: outline 100ms ease-in;
@@ -1115,6 +1133,21 @@ form {
      -moz-user-select: auto;
       -ms-user-select: auto;
           user-select: auto;
+}
+.add-product__outer-container.loading-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99;
+  -webkit-transition: opacity 150ms ease-in;
+  transition: opacity 150ms ease-in;
+}
+.add-product__outer-container.loading-overlay-open::before {
+  opacity: 1;
+  pointer-events: all;
 }
 .add-product__outer-container .container {
   height: 100%;

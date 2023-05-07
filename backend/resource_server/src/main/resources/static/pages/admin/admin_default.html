@@ -152,7 +152,7 @@
         </footer>
     </div>
 
-    <div class="add-product__outer-container" data-element-type="add-product-container">
+    <div class="add-product__outer-container loading-overlay" data-element-type="add-product-container">
         <div class="container">
             <header>
                 <nav class="navbar">
@@ -194,10 +194,9 @@
                                             <span class="input__error-message">Test message</span>
                                         </div>
 
-                                        <div class="input__field-container input__icon-type--both">
+                                        <div class="input__field-container input__icon-type--single">
                                             <label for="productPrice" class="input__label">Termék ára</label>
                                             <div class="input__inner-container">
-                                                <span class="material-symbols-rounded">attach_money</span>
                                                 <input id="productPrice" class="input__input-field" title="Termék ára"
                                                     name="productPrice" type="text" placeholder="3500Ft">
                                                 <span class="material-symbols-rounded input__icon-right">error</span>
@@ -219,11 +218,10 @@
                                 </div>
                                 <div class="button-container m--top v--right default-padding">
                                     <button type="button"
-                                        class="form__button-login button__typeof--primary ripple-button"
+                                        class="form__button-login button__typeof--primary ripple-button awaiting-server-animation"
                                         data-ripple="ripple" data-element-type="save-new-product">
-                                        <span class="ripple-text">Termék hozzáadása</span>
-                                        <span
-                                            class="material-symbols-rounded form__button-save-icon ripple-icon">add</span>
+                                        <span class="ripple-text loading-animation-span">Termék hozzáadása <span
+                                                class="material-symbols-rounded form__button-save-icon ripple-icon">add</span></span>
                                     </button>
                                 </div>
                             </div>
