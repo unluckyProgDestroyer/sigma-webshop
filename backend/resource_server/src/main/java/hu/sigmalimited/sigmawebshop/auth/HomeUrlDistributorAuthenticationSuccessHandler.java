@@ -22,22 +22,25 @@ import java.util.Map;
 public class HomeUrlDistributorAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
-    private RequestCache requestCache = new HttpSessionRequestCache();
+    private final RequestCache requestCache = new HttpSessionRequestCache();
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
-
+        clearAuthenticationAttributes(request);
         SavedRequest savedRequest = this.requestCache.getRequest(request, response);
 
-        if (savedRequest == null) {
+        if (savedRequest == null ) {
             handleDefaultDistribution(request, response, authentication);
-        } else {
-            String targetUrl = savedRequest.getRedirectUrl();
-            requestCache.removeRequest(request, response);
+            return;
+        }
+
+        String targetUrl = savedRequest.getRedirectUrl();
+        if (targetUrl.contains("8080/login") || targetUrl.contains("8080/logout")){
+            handleDefaultDistribution(request, response, authentication);
+        }else{
             redirectStrategy.sendRedirect(request, response, targetUrl.replace("?continue", ""));
         }
-        clearAuthenticationAttributes(request);
-
+        requestCache.removeRequest(request, response);
     }
 
     protected void handleDefaultDistribution(
@@ -57,18 +60,19 @@ public class HomeUrlDistributorAuthenticationSuccessHandler implements Authentic
     protected String determineTargetUrl(final Authentication authentication) {
 
         Map<String, String> roleTargetUrlMap = new HashMap<>();
-        roleTargetUrlMap.put("ROLE_USER", "user.html");
+        roleTargetUrlMap.put("ROLE_CUSTOMER", "/");
+        roleTargetUrlMap.put("ROLE_SUPPORT", "/support/orders");
         roleTargetUrlMap.put("ROLE_ADMIN", "/admin/home");
-
+        String targetUrl = "/";
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (final GrantedAuthority grantedAuthority : authorities) {
             String authorityName = grantedAuthority.getAuthority();
             if(roleTargetUrlMap.containsKey(authorityName)) {
-                return roleTargetUrlMap.get(authorityName);
+                targetUrl = roleTargetUrlMap.get(authorityName);
+                break;
             }
         }
-
-        throw new IllegalStateException();
+        return targetUrl;
     }
 
     protected void clearAuthenticationAttributes(HttpServletRequest request) {
