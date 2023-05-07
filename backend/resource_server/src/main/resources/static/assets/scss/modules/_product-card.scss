@@ -25,7 +25,7 @@
         flex-direction: column;
         justify-content: center;
         gap: 1rem 0;
-        background-color: darkColor(secondaryDark);
+        background-color: darkColor(secondaryDarker);
         border-radius: 0.5rem;
     }
 
@@ -77,6 +77,10 @@
     }
 }
 
+.button-container.default-padding .button__typeof--tertiary {
+    margin-right: 0;
+}
+
 @media screen and (max-width: 575.9px) {
     .product {
         &__card-buttons {
@@ -95,6 +99,10 @@
             width: clamp(25rem, -7.143rem + 89.286vw, 37.5rem);
         }
     }
+
+    .button-container.default-padding .button__typeof--tertiary {
+        margin-right: 0.7rem;
+    }
 }
 
 @media screen and (min-width: 800px) {
@@ -109,8 +117,4 @@
             width: auto;
         }
     }
-}
-
-.button-container.default-padding .button__typeof--tertiary {
-    margin-right: 0;
 }

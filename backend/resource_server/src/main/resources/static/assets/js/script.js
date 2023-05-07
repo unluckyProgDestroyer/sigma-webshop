@@ -25,3 +25,43 @@ for (const rippleEffect of rippleEffects) {
     rippleEffect.addEventListener("mousedown", createRipple);
 }
 /* ripple effect funciton */
+
+const body = document.querySelector("body");
+const overlay = document.querySelector('[data-element-type="overlay"]');
+const addProductContainer = document.querySelector('[data-element-type="add-product-container"]');
+const addProductTrigger = document.querySelector('[data-element-type="add-product-trigger"]');
+const closeProductContainer = document.querySelector('[data-element-type="close-product-container"]');
+const saveNewProduct = document.querySelector('[data-element-type="save-new-product"]');
+
+addProductTrigger.addEventListener("click", function () {
+    addProductContainer.classList.add("visible");
+    body.style.setProperty("overflow", "hidden");
+
+    if (!overlay.classList.contains("hidden") && !overlay.classList.contains("visible")) {
+        overlay.classList.add("visible");
+    } else if (overlay.classList.contains("hidden")) {
+        overlay.classList.remove("hidden");
+        overlay.classList.add("visible");
+    }
+})
+
+closeProductContainer.addEventListener("click", function () {
+    addProductContainer.classList.remove("visible");
+    body.style.removeProperty("overflow");
+
+    if (overlay.classList.contains("visible")) {
+        overlay.classList.remove("visible");
+        overlay.classList.add("hidden");
+    }
+})
+
+saveNewProduct.addEventListener("click", function () {
+    addProductContainer.classList.remove("visible");
+    body.style.removeProperty("overflow");
+
+    if (overlay.classList.contains("visible")) {
+        overlay.classList.remove("visible");
+        overlay.classList.add("hidden");
+    }
+})
+

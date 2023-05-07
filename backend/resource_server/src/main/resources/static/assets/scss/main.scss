@@ -76,6 +76,26 @@ h1 {
     margin-top: clamp(6rem, 4.505rem + 7.251vw, 9rem);
 }
 
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 99;
+    transition: opacity 0ms ease-in 200ms;
+
+    &.visible {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    &.hidden {
+        opacity: 0;
+        transition: opacity 250ms ease-in 90ms;
+    }
+}
+
 @media screen and (min-width: 992px) and (hover: hover) and (pointer: fine) {
     ::-webkit-scrollbar {
         width: 8px;

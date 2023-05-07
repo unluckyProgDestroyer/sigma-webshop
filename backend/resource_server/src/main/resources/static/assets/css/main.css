@@ -268,6 +268,10 @@ button:focus:not(:focus-visible) {
   font-weight: 700;
 }
 
+form {
+  display: contents;
+}
+
 .form__section {
   margin-top: 9rem;
   margin-bottom: 16rem;
@@ -519,7 +523,12 @@ button:focus:not(:focus-visible) {
   -webkit-transform: scale(0.98);
           transform: scale(0.98);
 }
-.button-container .button__typeof--tertiary:active .button__icon {
+.button-container .button__typeof--tertiary:active.v--left .button__icon {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  margin-left: 0.2rem;
+}
+.button-container .button__typeof--tertiary:active.v--right .button__icon {
   -webkit-transform: scale(1);
           transform: scale(1);
   margin-right: 0.2rem;
@@ -542,16 +551,6 @@ button:focus:not(:focus-visible) {
   position: relative;
   overflow: hidden;
 }
-.button-container .ripple-button::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  background-color: rgba(0, 0, 0, 0);
-}
 .button-container .ripple-button .ripple-span {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.3);
@@ -561,6 +560,16 @@ button:focus:not(:focus-visible) {
   -webkit-animation: ripple 0.5s ease-in;
           animation: ripple 0.5s ease-in;
   z-index: 1;
+}
+.button-container .ripple-button:not(.awaiting-server-animation)::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0);
 }
 .button-container--action-container {
   display: -webkit-box;
@@ -629,6 +638,31 @@ button:focus:not(:focus-visible) {
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
 }
+.button-container .awaiting-server-animation {
+  position: relative;
+}
+.button-container .awaiting-server-animation span {
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  opacity: 0 !important;
+  -webkit-transition: opacity 100ms ease-in, -webkit-transform 100ms ease-in !important;
+  transition: opacity 100ms ease-in, -webkit-transform 100ms ease-in !important;
+  transition: transform 100ms ease-in, opacity 100ms ease-in !important;
+  transition: transform 100ms ease-in, opacity 100ms ease-in, -webkit-transform 100ms ease-in !important;
+}
+.button-container .awaiting-server-animation::after {
+  content: " ";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 4px solid #f9f7f1;
+  border-color: #f9f7f1 transparent #f9f7f1 transparent;
+  -webkit-animation: awaitingServerAnimation 1.2s linear infinite;
+          animation: awaitingServerAnimation 1.2s linear infinite;
+  -webkit-animation-delay: 100ms;
+          animation-delay: 100ms;
+}
 
 @media screen and (min-width: 576px) {
   .button-container.multiple-button {
@@ -662,6 +696,26 @@ button:focus:not(:focus-visible) {
     -webkit-transform: scale(4.5);
             transform: scale(4.5);
     opacity: 0;
+  }
+}
+@-webkit-keyframes awaitingServerAnimation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes awaitingServerAnimation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 .input__field-container {
@@ -949,7 +1003,7 @@ button:focus:not(:focus-visible) {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 1rem 0;
-  background-color: #f2f0e9;
+  background-color: #f9f7f1;
   border-radius: 0.5rem;
 }
 .product__image-container {
@@ -1002,6 +1056,10 @@ button:focus:not(:focus-visible) {
           flex-grow: 1;
 }
 
+.button-container.default-padding .button__typeof--tertiary {
+  margin-right: 0;
+}
+
 @media screen and (max-width: 575.9px) {
   .product__card-buttons {
     margin-top: 5rem;
@@ -1014,6 +1072,9 @@ button:focus:not(:focus-visible) {
   .product__card-container {
     width: clamp(25rem, -7.143rem + 89.286vw, 37.5rem);
   }
+  .button-container.default-padding .button__typeof--tertiary {
+    margin-right: 0.7rem;
+  }
 }
 @media screen and (min-width: 800px) {
   .card__outer-container {
@@ -1023,8 +1084,92 @@ button:focus:not(:focus-visible) {
     width: auto;
   }
 }
-.button-container.default-padding .button__typeof--tertiary {
-  margin-right: 0;
+.add-product__outer-container {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #fdfbf7;
+  overflow: auto;
+  inset: 0;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transform: scale(0.85);
+          transform: scale(0.85);
+  -webkit-transition: opacity 120ms ease-in 70ms, -webkit-transform 120ms ease-in 70ms;
+  transition: opacity 120ms ease-in 70ms, -webkit-transform 120ms ease-in 70ms;
+  transition: opacity 120ms ease-in 70ms, transform 120ms ease-in 70ms;
+  transition: opacity 120ms ease-in 70ms, transform 120ms ease-in 70ms, -webkit-transform 120ms ease-in 70ms;
+}
+.add-product__outer-container.visible {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
+  pointer-events: all;
+  -webkit-user-select: auto;
+     -moz-user-select: auto;
+      -ms-user-select: auto;
+          user-select: auto;
+}
+.add-product__outer-container .container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.add-product__inner-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 5rem;
+}
+.add-product__image-container {
+  display: grid;
+  place-content: center;
+  padding: 4rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  background-color: #fdfbf7;
+  border: 2px dashed #282828;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  -webkit-transition: background-color 100ms ease-in;
+  transition: background-color 100ms ease-in;
+}
+.add-product__image-container:hover, .add-product__image-container:focus-visible {
+  background-color: rgba(242, 240, 233, 0.7);
+}
+.add-product__image-container:active {
+  background-color: rgba(242, 240, 233, 0.3);
+}
+.add-product__fileupload-label {
+  display: contents;
+}
+.add-product__fileupload-input {
+  display: none;
+}
+.add-product__icon {
+  text-align: center;
+}
+.add-product__content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 .footer {
@@ -1114,6 +1259,26 @@ h1 {
 
 .main__section {
   margin-top: clamp(6rem, 4.505rem + 7.251vw, 9rem);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99;
+  -webkit-transition: opacity 0ms ease-in 200ms;
+  transition: opacity 0ms ease-in 200ms;
+}
+.overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+.overlay.hidden {
+  opacity: 0;
+  -webkit-transition: opacity 250ms ease-in 90ms;
+  transition: opacity 250ms ease-in 90ms;
 }
 
 @media screen and (min-width: 992px) and (hover: hover) and (pointer: fine) {

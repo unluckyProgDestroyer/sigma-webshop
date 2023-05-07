@@ -54,7 +54,7 @@
 
             <section class="main__section">
                 <div class="card__outer-container">
-                    <div class="product__card-container add-new-container">
+                    <div class="product__card-container add-new-container" data-element-type="add-product-trigger">
                         <span class="material-symbols-rounded add-new-item">add</span>
                     </div>
                     <!-- product card -->
@@ -71,7 +71,7 @@
                             <div
                                 class="product__card-buttons button-container multiple-button v--right default-padding">
                                 <button onclick="location.href=''" type="button"
-                                    class="form__button-login button__typeof--tertiary">
+                                    class="form__button-login button__typeof--tertiary right-margin">
                                     <span class="ripple-text">Törlés</span>
                                     <span class="material-symbols-rounded button__icon">delete</span>
                                 </button>
@@ -98,7 +98,7 @@
                             <div
                                 class="product__card-buttons button-container multiple-button v--right default-padding">
                                 <button onclick="location.href=''" type="button"
-                                    class="form__button-login button__typeof--tertiary">
+                                    class="form__button-login button__typeof--tertiary right-margin">
                                     <span class="ripple-text">Törlés</span>
                                     <span class="material-symbols-rounded button__icon">delete</span>
                                 </button>
@@ -125,7 +125,7 @@
                             <div
                                 class="product__card-buttons button-container multiple-button v--right default-padding">
                                 <button onclick="location.href=''" type="button"
-                                    class="form__button-login button__typeof--tertiary">
+                                    class="form__button-login button__typeof--tertiary right-margin">
                                     <span class="ripple-text">Törlés</span>
                                     <span class="material-symbols-rounded button__icon">delete</span>
                                 </button>
@@ -151,6 +151,98 @@
             </div>
         </footer>
     </div>
+
+    <div class="add-product__outer-container" data-element-type="add-product-container">
+        <div class="container">
+            <header>
+                <nav class="navbar">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="">Sigma</a>
+                    </div>
+                </nav>
+            </header>
+
+            <main>
+                <div class="button-container v--left m--bottom default-padding left-margin">
+                    <button type="button" class="button__typeof--tertiary v--left left-margin"
+                        data-element-type="close-product-container">
+                        <span class="material-symbols-rounded button__icon">arrow_back</span>
+                        <span>Hozzáadása megszakítása</span>
+                    </button>
+                </div>
+                <form action="">
+                    <div class="add-product__inner-container">
+                        <label for="productUpload" class="add-product__fileupload-label" style="display: contents;">
+                            <div class="add-product__image-container">
+                                <span class="material-symbols-rounded add-product__icon">upload</span>
+                                <span class="add-product__image">Kép feltöltése</span>
+                                <input class="add-product__fileupload-input" type="file" name="" id="productUpload"
+                                    style="display: none;">
+                            </div>
+                        </label>
+                        <div class="add-product__content">
+                            <div class="form__input-container">
+                                <div class="form__input-grid-container">
+                                    <div class="form__input-row">
+                                        <div class="input__field-container input__icon-type--single">
+                                            <label for="productName" class="input__label">Termék név</label>
+                                            <div class="input__inner-container">
+                                                <input id="productName" class="input__input-field" title="Termék név"
+                                                    name="productName" type="text" placeholder="Bohóc prehoda">
+                                                <span class="material-symbols-rounded input__icon-right">error</span>
+                                            </div>
+                                            <span class="input__error-message">Test message</span>
+                                        </div>
+
+                                        <div class="input__field-container input__icon-type--both">
+                                            <label for="productPrice" class="input__label">Termék ára</label>
+                                            <div class="input__inner-container">
+                                                <span class="material-symbols-rounded">attach_money</span>
+                                                <input id="productPrice" class="input__input-field" title="Termék ára"
+                                                    name="productPrice" type="text" placeholder="3500Ft">
+                                                <span class="material-symbols-rounded input__icon-right">error</span>
+                                            </div>
+                                            <span class="input__error-message">Test message</span>
+                                        </div>
+
+                                        <div class="input__field-container input__icon-type--single">
+                                            <label for="productCategory" class="input__label">Termék kategóriája</label>
+                                            <div class="input__inner-container">
+                                                <input id="productCategory" class="input__input-field"
+                                                    title="Termék kategóriája" name="productCategory" type="text"
+                                                    placeholder="pizza">
+                                                <span class="material-symbols-rounded input__icon-right">error</span>
+                                            </div>
+                                            <span class="input__error-message">Test message</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-container m--top v--right default-padding">
+                                    <button type="button"
+                                        class="form__button-login button__typeof--primary ripple-button"
+                                        data-ripple="ripple" data-element-type="save-new-product">
+                                        <span class="ripple-text">Termék hozzáadása</span>
+                                        <span
+                                            class="material-symbols-rounded form__button-save-icon ripple-icon">add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="footer__container">
+                    <span class="footer__copyright">©</span>
+                    <span class="footer__copy-text">Kisbirtok, nagybirtok, <span
+                            class="footer__copy-text--sigma">Sigma</span>
+                        shoppal nem birtok</span>
+                    <img src="../../assets/img/emote.svg" class="footer__copy-icon" alt="emote">
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div class="overlay" data-element-type="overlay"></div>
 </body>
 
 </html>
