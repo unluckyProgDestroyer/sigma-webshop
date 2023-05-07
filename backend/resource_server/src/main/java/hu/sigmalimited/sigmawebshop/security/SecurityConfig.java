@@ -43,7 +43,9 @@ public class SecurityConfig {
             auth.requestMatchers("/admin/**").hasRole("ADMIN");
             auth.requestMatchers("/support/**").hasAnyRole("SUPPORT", "ADMIN");
             auth.requestMatchers("/orders").hasRole("CUSTOMER");
-            auth.requestMatchers("/product/*").permitAll();
+            auth.requestMatchers("/products/api/v1/**").permitAll();
+            auth.requestMatchers("/products/*").permitAll();
+            auth.requestMatchers("/products").permitAll();
             auth.requestMatchers("/").permitAll();
             auth.anyRequest().denyAll();
         });
