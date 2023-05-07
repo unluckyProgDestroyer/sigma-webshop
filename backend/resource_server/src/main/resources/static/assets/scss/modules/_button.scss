@@ -46,15 +46,15 @@ $customButtonColors: (
                 &--primary {
                     padding-top: clamp(0.9rem, 0.85rem + 0.242vw, 1rem);
                     padding-bottom: clamp(0.9rem, 0.85rem + 0.242vw, 1rem);
-                    padding-left: clamp(1.3rem, 1.15rem + 0.725vw, 1.6rem);
-                    padding-right: clamp(1.8rem, 1.7rem + 0.483vw, 2rem);
+                    padding-left: clamp(1.8rem, 1.7rem + 0.483vw, 2rem);
+                    padding-right: clamp(1.3rem, 1.15rem + 0.725vw, 1.6rem);
                 }
 
                 &--secondary {
                     padding-top: clamp(0.9rem, 0.85rem + 0.242vw, 1rem);
                     padding-bottom: clamp(0.9rem, 0.85rem + 0.242vw, 1rem);
-                    padding-left: clamp(1.3rem, 1.15rem + 0.725vw, 1.6rem);
-                    padding-right: clamp(1.8rem, 1.7rem + 0.483vw, 2rem);
+                    padding-left: clamp(1.8rem, 1.7rem + 0.483vw, 2rem);
+                    padding-right: clamp(1.3rem, 1.15rem + 0.725vw, 1.6rem);
                 }
 
                 &--tertiary {
@@ -76,6 +76,7 @@ $customButtonColors: (
                 font-weight: 500;
                 white-space: nowrap;
                 border: none;
+                border-radius: 0.4rem;
                 user-select: none;
                 -webkit-user-select: none;
                 outline: 2px solid;
@@ -203,7 +204,7 @@ $customButtonColors: (
                 align-items: center;
                 justify-content: center;
                 gap: 1rem;
-                padding: 0.2rem 0.2rem 0.2rem 0;
+                padding: 0.2rem 0rem 0.2rem 0.2rem;
                 font-size: fontSize(tertiary);
                 color: darkColor(fontColorDisabled);
                 background: none;
@@ -217,7 +218,8 @@ $customButtonColors: (
                 transition: color 90ms ease-in, gap 90ms ease-in, outline 100ms ease-in;
 
                 .button__icon {
-                    font-size: clamp(1rem, 0.85rem + 0.725vw, 1.3rem);
+                    // font-size: clamp(1rem, 0.85rem + 0.725vw, 1.3rem);
+                    font-size: clamp(1.1rem, 0.95rem + 0.725vw, 1.4rem);
                 }
 
                 &.button__icon--noicon {
@@ -249,9 +251,18 @@ $customButtonColors: (
                         transform: scale(0.98);
                     }
 
-                    .button__icon {
-                        transform: scale(1);
-                        margin-left: 0.2rem;
+                    &.v--left {
+                        .button__icon {
+                            transform: scale(1);
+                            margin-left: 0.2rem;
+                        }
+                    }
+
+                    &.v--right {
+                        .button__icon {
+                            transform: scale(1);
+                            margin-right: 0.2rem;
+                        }
                     }
                 }
 
@@ -280,6 +291,17 @@ $customButtonColors: (
             position: relative;
             overflow: hidden;
 
+            .ripple-span {
+                position: absolute;
+                background-color: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.5s ease-in;
+                z-index: 1;
+            }
+        }
+
+        .ripple-button:not(.awaiting-server-animation) {
             &::before {
                 content: "";
                 position: absolute;
@@ -289,15 +311,6 @@ $customButtonColors: (
                 left: 0;
                 z-index: 3;
                 background-color: rgba(0, 0, 0, 0);
-            }
-
-            .ripple-span {
-                position: absolute;
-                background-color: rgba(255, 255, 255, 0.2);
-                border-radius: 50%;
-                transform: scale(0);
-                animation: ripple 0.5s ease-in;
-                z-index: 1;
             }
         }
 
@@ -363,6 +376,28 @@ $customButtonColors: (
                 }
             }
         }
+
+        .awaiting-server-animation {
+            position: relative;
+
+            span {
+                transform: scaleX(0);
+                opacity: 0 !important;
+                transition: transform 100ms ease-in, opacity 100ms ease-in !important;
+            }
+
+            &::after {
+                content: " ";
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: 4px solid darkColor(secondaryDarker);
+                border-color: darkColor(secondaryDarker) transparent darkColor(secondaryDarker) transparent;
+                animation: awaitingServerAnimation 1.2s linear infinite;
+                animation-delay: 100ms;
+            }
+        }
     }
 }
 
@@ -390,5 +425,14 @@ $customButtonColors: (
     to {
         transform: scale(4.5);
         opacity: 0;
+    }
+}
+
+@keyframes awaitingServerAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }

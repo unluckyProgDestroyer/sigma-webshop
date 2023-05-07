@@ -1,5 +1,9 @@
 // @use "../helpers/variables" as *;
 
+form {
+    display: contents;
+}
+
 .form {
     &__section {
         margin-top: 9rem;
