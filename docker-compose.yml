@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: .\backend\resource_server
+    environment:
+      - REDIS_HOST=redis
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    volumes:
+      - .\backend\resource_server\:/project
+      - ${MAVEN_REPOSITORY_PATH}:/root/.m2/
+    networks:
+      - redisNetwork
+    depends_on:
+      - redis
+  redis:
+    image: redis
+    expose:
+      - "6379"
+    ports:
+      - "6379:6379"
+    networks:
+      - redisNetwork
+
+networks:
+  redisNetwork:
