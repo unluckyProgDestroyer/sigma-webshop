@@ -5,7 +5,7 @@
  - Entities stored in hsql database.
  - Uploaded image files stored in the file system. You may declare SIGMASHOP_UPLOADPATH environment variable, the default is the root path for upload directory.
  - Route security based on blacklist and Principle of least privilege.
- - Fronted links not yet connected to database routes.
+ - Frontend links not yet connected to database routes.
  
  # Implemented features
  - User login, logout. Login page will only appear for unauthenticated users, otherwise redirect on /login route.
