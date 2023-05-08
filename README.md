@@ -23,3 +23,4 @@
  - Support users, who can access all orders to help out customers when needed.
  - Sending after restocking out of stock product for subscribers.
  - Storage (inventory) database backend, async communication between storage and resource server.
+ - Security: CSRF; prevent SQL injection
