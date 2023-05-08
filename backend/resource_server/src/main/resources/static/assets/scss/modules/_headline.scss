@@ -1,0 +1,14 @@
+// @use "../helpers/variables" as *;
+
+.headline {
+    &__section {
+        margin-top: clamp(6rem, 5.502rem + 2.417vw, 7rem);
+    }
+
+    &__h1 {
+        text-align: center;
+        color: darkColor(fontColor);
+        font-size: fontSize(h1);
+        font-weight: 700;
+    }
+}

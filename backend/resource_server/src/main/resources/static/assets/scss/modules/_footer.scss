@@ -1,0 +1,36 @@
+// @use "../helpers/variables" as *;
+
+.footer {
+    margin-top: 5rem;
+    flex-shrink: 0;
+
+    &__container {
+        width: 100%;
+        @include flexbox();
+        gap: clamp(0.5rem, -1.563rem + 10vw, 0.625rem);
+        padding: 1.5rem 0;
+        color: darkColor(fontColorDisabled);
+        font-size: clamp(0.7rem, 0.549rem + 0.731vw, 0.9rem);
+    }
+
+    &__copy-text,
+    &__copyright {
+        pointer-events: none;
+        user-select: none;
+    }
+
+    &__copy-text--sigma {
+        font-weight: 700;
+    }
+
+    &__copy-icon {
+        width: clamp(2.8rem, 2.273rem + 2.557vw, 3.5rem);
+        cursor: pointer;
+        transform: scale(1);
+        transition: transform 200ms ease-in;
+
+        &:hover {
+            transform: scale(3) translateY(-70%);
+        }
+    }
+}

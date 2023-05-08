@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - termékek</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" />
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/dist/main.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"
+        defer></script>
+    <script src="../../assets/js/script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="">Sigma</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse navbar__collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav navbar__nav">
+                            <a class="nav-link navbar__link navbar__link-active" href="">Termékek</a>
+                            <a class="nav-link navbar__link" href="../admin/admin_recepient.html">Rendelések</a>
+                            <a class="nav-link navbar__link" href="../admin/admin_user.html">Felhasználók</a>
+                            <a class="nav-link navbar__link navbar__link-exit" href="../auth/login.html">Kilépés</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="headline__section">
+                <h1 class="headline__h1">Termékek</h1>
+            </section>
+
+            <section class="main__section">
+                <div class="card__outer-container">
+                    <div class="product__card-container add-new-container" data-element-type="add-product-trigger">
+                        <span class="material-symbols-rounded add-new-item">add</span>
+                    </div>
+                    <!-- product card -->
+                    <div class="product__card-container">
+                        <div class="product__image-container">
+                            <img src="https://placehold.co/400x250" alt="" class="product__image">
+                            <span class="product__category">pizza</span>
+                        </div>
+                        <div class="product__card-body">
+                            <div class="product__card-title">
+                                <h3 class="product__card-title--name">Termék neve</h3>
+                                <span class="product__card-title--price">3500Ft</span>
+                            </div>
+                            <div
+                                class="product__card-buttons button-container multiple-button v--right default-padding">
+                                <button onclick="location.href=''" type="button"
+                                    class="form__button-login button__typeof--tertiary right-margin">
+                                    <span class="ripple-text">Törlés</span>
+                                    <span class="material-symbols-rounded button__icon">delete</span>
+                                </button>
+                                <button onclick="location.href=''" type="button"
+                                    class="form__button-login button__typeof--primary ripple-button button__icon"
+                                    data-ripple="ripple">
+                                    <span class="ripple-text">Szerkesztés</span>
+                                    <span class="material-symbols-rounded button__icon">edit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product card -->
+                    <div class="product__card-container">
+                        <div class="product__image-container">
+                            <img src="https://placehold.co/400x250" alt="" class="product__image">
+                            <span class="product__category">pizza</span>
+                        </div>
+                        <div class="product__card-body">
+                            <div class="product__card-title">
+                                <h3 class="product__card-title--name">Termék neve</h3>
+                                <span class="product__card-title--price">3500Ft</span>
+                            </div>
+                            <div
+                                class="product__card-buttons button-container multiple-button v--right default-padding">
+                                <button onclick="location.href=''" type="button"
+                                    class="form__button-login button__typeof--tertiary right-margin">
+                                    <span class="ripple-text">Törlés</span>
+                                    <span class="material-symbols-rounded button__icon">delete</span>
+                                </button>
+                                <button onclick="location.href=''" type="button"
+                                    class="form__button-login button__typeof--primary ripple-button button__icon"
+                                    data-ripple="ripple">
+                                    <span class="ripple-text">Szerkesztés</span>
+                                    <span class="material-symbols-rounded button__icon">edit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product card -->
+                    <div class="product__card-container">
+                        <div class="product__image-container">
+                            <img src="https://placehold.co/400x250" alt="" class="product__image">
+                            <span class="product__category">pizza</span>
+                        </div>
+                        <div class="product__card-body">
+                            <div class="product__card-title">
+                                <h3 class="product__card-title--name">Termék neve</h3>
+                                <span class="product__card-title--price">3500Ft</span>
+                            </div>
+                            <div
+                                class="product__card-buttons button-container multiple-button v--right default-padding">
+                                <button onclick="location.href=''" type="button"
+                                    class="form__button-login button__typeof--tertiary right-margin">
+                                    <span class="ripple-text">Törlés</span>
+                                    <span class="material-symbols-rounded button__icon">delete</span>
+                                </button>
+                                <button onclick="location.href=''" type="button"
+                                    class="form__button-login button__typeof--primary ripple-button button__icon"
+                                    data-ripple="ripple">
+                                    <span class="ripple-text">Szerkesztés</span>
+                                    <span class="material-symbols-rounded button__icon">edit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer id="footer" class="footer">
+            <div class="footer__container">
+                <span class="footer__copyright">©</span>
+                <span class="footer__copy-text">Kisbirtok, nagybirtok, <span
+                        class="footer__copy-text--sigma">Sigma</span>
+                    shoppal nem birtok</span>
+                <img id="emoteIcon" src="../../assets/img/emote.svg" class="footer__copy-icon" alt="emote">
+            </div>
+        </footer>
+    </div>
+
+    <div class="add-product__outer-container loading-overlay" data-element-type="add-product-container">
+        <div class="container">
+            <header>
+                <nav class="navbar">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="">Sigma</a>
+                    </div>
+                </nav>
+            </header>
+
+            <main>
+                <div class="button-container v--left m--bottom default-padding left-margin">
+                    <button type="button" class="button__typeof--tertiary v--left left-margin"
+                        data-element-type="close-product-container">
+                        <span class="material-symbols-rounded button__icon">arrow_back</span>
+                        <span>Hozzáadása megszakítása</span>
+                    </button>
+                </div>
+                <form action="">
+                    <div class="add-product__inner-container">
+                        <label for="productUpload" class="add-product__fileupload-label" style="display: contents;">
+                            <div class="add-product__image-container">
+                                <span class="material-symbols-rounded add-product__icon">upload</span>
+                                <span class="add-product__image">Kép feltöltése</span>
+                                <input class="add-product__fileupload-input" type="file" name="" id="productUpload"
+                                    style="display: none;">
+                            </div>
+                        </label>
+                        <div class="add-product__content">
+                            <div class="form__input-container">
+                                <div class="form__input-grid-container">
+                                    <div class="form__input-row">
+                                        <div class="input__field-container input__icon-type--single">
+                                            <label for="productName" class="input__label">Termék név</label>
+                                            <div class="input__inner-container">
+                                                <input id="productName" class="input__input-field" title="Termék név"
+                                                    name="productName" type="text" placeholder="Bohóc prehoda">
+                                                <span class="material-symbols-rounded input__icon-right">error</span>
+                                            </div>
+                                            <span class="input__error-message">Test message</span>
+                                        </div>
+
+                                        <div class="input__field-container input__icon-type--single">
+                                            <label for="productPrice" class="input__label">Termék ára</label>
+                                            <div class="input__inner-container">
+                                                <input id="productPrice" class="input__input-field" title="Termék ára"
+                                                    name="productPrice" type="text" placeholder="3500Ft">
+                                                <span class="material-symbols-rounded input__icon-right">error</span>
+                                            </div>
+                                            <span class="input__error-message">Test message</span>
+                                        </div>
+
+                                        <div class="input__field-container input__icon-type--single">
+                                            <label for="productCategory" class="input__label">Termék kategóriája</label>
+                                            <div class="input__inner-container">
+                                                <input id="productCategory" class="input__input-field"
+                                                    title="Termék kategóriája" name="productCategory" type="text"
+                                                    placeholder="pizza">
+                                                <span class="material-symbols-rounded input__icon-right">error</span>
+                                            </div>
+                                            <span class="input__error-message">Test message</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-container m--top v--right default-padding">
+                                    <button type="button"
+                                        class="form__button-login button__typeof--primary ripple-button awaiting-server-animation"
+                                        data-ripple="ripple" data-element-type="save-new-product">
+                                        <span class="ripple-text loading-animation-span">Termék hozzáadása <span
+                                                class="material-symbols-rounded form__button-save-icon ripple-icon">add</span></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="footer__container">
+                    <span class="footer__copyright">©</span>
+                    <span class="footer__copy-text">Kisbirtok, nagybirtok, <span
+                            class="footer__copy-text--sigma">Sigma</span>
+                        shoppal nem birtok</span>
+                    <img src="../../assets/img/emote.svg" class="footer__copy-icon" alt="emote">
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div class="overlay" data-element-type="overlay"></div>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+.button-container {
+    .form__button-login {
+        flex-grow: 1;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .button-container {
+        .form__button-login {
+            flex-grow: 0;
+        }
+    }
+}

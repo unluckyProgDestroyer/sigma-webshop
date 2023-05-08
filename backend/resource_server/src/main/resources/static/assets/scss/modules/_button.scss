@@ -1,0 +1,454 @@
+@use "../helpers/variables" as *;
+
+$customButtonColors: (
+    primaryErrorHoverAndFocus: darken(#f56363, 5%),
+    secondaryErrorHoverAndActive: transparentize(#f56363, 0.95),
+    secondaryErrorFocus: darken(#f56363, 10%),
+    tertiaryErrorHoverAndFocus: darken(#f56363, 10%),
+    tertiaryPrimaryActive: lighten(#197df0, 15%),
+);
+
+@function customButtonColors($buttonColor-name) {
+    @return map-get($customButtonColors, $buttonColor-name);
+}
+
+.button {
+    &-container {
+        display: flex;
+        align-items: center;
+
+        &.v--left {
+            justify-content: flex-start;
+        }
+
+        &.v--center {
+            justify-content: center;
+        }
+
+        &.v--right {
+            justify-content: flex-end;
+        }
+
+        &.v--sb {
+            justify-content: space-between;
+        }
+
+        &.m--top {
+            margin-top: clamp(2rem, -0.012rem + 9.756vw, 3.5rem);
+        }
+
+        &.m--bottom {
+            margin-bottom: clamp(2rem, -0.012rem + 9.756vw, 3.5rem);
+        }
+
+        &.default-padding {
+            .button__typeof {
+                &--primary {
+                    padding-top: clamp(0.9rem, 0.85rem + 0.242vw, 1rem);
+                    padding-bottom: clamp(0.9rem, 0.85rem + 0.242vw, 1rem);
+                    padding-left: clamp(1.8rem, 1.7rem + 0.483vw, 2rem);
+                    padding-right: clamp(1.3rem, 1.15rem + 0.725vw, 1.6rem);
+                }
+
+                &--secondary {
+                    padding-top: clamp(0.9rem, 0.85rem + 0.242vw, 1rem);
+                    padding-bottom: clamp(0.9rem, 0.85rem + 0.242vw, 1rem);
+                    padding-left: clamp(1.8rem, 1.7rem + 0.483vw, 2rem);
+                    padding-right: clamp(1.3rem, 1.15rem + 0.725vw, 1.6rem);
+                }
+
+                &--tertiary {
+                    padding: 0.7rem;
+                    margin-right: 1rem;
+                }
+            }
+        }
+
+        .button__typeof {
+            &--primary {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                color: white;
+                background-color: darkColor(accent);
+                font-size: fontSize(primary);
+                font-weight: 500;
+                white-space: nowrap;
+                border: none;
+                border-radius: 0.4rem;
+                user-select: none;
+                -webkit-user-select: none;
+                outline: 2px solid;
+                outline-color: transparent;
+                outline-offset: 3px;
+                transition: background-color 100ms ease-in, outline-color 100ms ease-in;
+
+                .button__icon {
+                    font-size: clamp(1.25rem, 1.063rem + 0.906vw, 1.625rem);
+                }
+
+                &.button__icon--noicon {
+                    .button__icon {
+                        display: none;
+                    }
+                }
+
+                &:hover,
+                &:focus {
+                    background-color: darkColor(buttonHover);
+                }
+
+                &:focus-visible {
+                    outline: 2px solid darkColor(focusOutlineColorLight);
+                    outline-offset: 3px;
+                }
+
+                &:active {
+                    background-color: darkColor(accent);
+                }
+
+                &.button__state--error {
+                    color: darkColor(bg);
+                    background-color: darkColor(failColor);
+
+                    &:hover,
+                    &:focus {
+                        background-color: customButtonColors(primaryErrorHoverAndFocus);
+                    }
+
+                    &:focus-visible {
+                        outline: 2px solid customButtonColors(primaryErrorHoverAndFocus);
+                        outline-offset: 3px;
+                    }
+
+                    &:active {
+                        background-color: darkColor(failColor);
+                    }
+
+                    .button__text {
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            &--secondary {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                color: darkColor(fontColor);
+                background-color: transparent;
+                font-size: fontSize(secondary);
+                font-weight: 400;
+                white-space: nowrap;
+                border: 2px solid darkColor(primary);
+                user-select: none;
+                -webkit-user-select: none;
+                outline: 2px solid;
+                outline-color: transparent;
+                outline-offset: 3px;
+                transition: background-color 100ms ease-in, border-color 100ms ease-in, outline-color 100ms ease-in;
+
+                .button__icon {
+                    font-size: clamp(1.1rem, 0.95rem + 0.725vw, 1.4rem);
+                }
+
+                &.button__icon--noicon {
+                    .button__icon {
+                        display: none;
+                    }
+                }
+
+                &:hover,
+                &:focus {
+                    border-color: darkColor(buttonHover);
+                    background-color: darkColor(tableRowBgLight);
+                }
+
+                &:focus-visible {
+                    border-color: darkColor(buttonHover);
+                    outline: 2px solid darkColor(focusOutlineColorLight);
+                    outline-offset: 3px;
+                }
+
+                &:active {
+                    border-color: darkColor(primary);
+                    background-color: darkColor(tableRowBgDark);
+                }
+
+                &.button__state--error {
+                    color: darkColor(failColor);
+                    border-color: darkColor(failColor);
+
+                    &:hover,
+                    &:focus {
+                        background-color: customButtonColors(secondaryErrorHoverAndActive);
+                    }
+
+                    &:focus-visible {
+                        color: customButtonColors(secondaryErrorFocus);
+                        border-color: customButtonColors(secondaryErrorFocus);
+                        outline: 2px solid customButtonColors(secondaryErrorFocus);
+                        outline-offset: 3px;
+                    }
+
+                    &:active {
+                        background-color: customButtonColors(secondaryErrorHoverAndActive);
+                    }
+                }
+            }
+
+            &--tertiary {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                padding: 0.2rem 0rem 0.2rem 0.2rem;
+                font-size: fontSize(tertiary);
+                color: darkColor(fontColorDisabled);
+                background: none;
+                border: none;
+                white-space: nowrap;
+                user-select: none;
+                -webkit-user-select: none;
+                outline: 2px solid;
+                outline-color: transparent;
+                outline-offset: 6px;
+                transition: color 90ms ease-in, gap 90ms ease-in, outline 100ms ease-in;
+
+                .button__icon {
+                    // font-size: clamp(1rem, 0.85rem + 0.725vw, 1.3rem);
+                    font-size: clamp(1.1rem, 0.95rem + 0.725vw, 1.4rem);
+                }
+
+                &.button__icon--noicon {
+                    .button__icon {
+                        display: none;
+                    }
+                }
+
+                .button__text,
+                .button__icon {
+                    transition: transform 90ms ease-in, margin 90ms ease-in;
+                }
+
+                &:hover,
+                &:focus {
+                    color: darkColor(fontColor);
+                }
+
+                &:focus-visible {
+                    outline: 2px solid darkColor(focusOutlineColorPrimary);
+                    outline-offset: 6px;
+                }
+
+                &:active {
+                    color: darkColor(fontColorDisabled);
+                    gap: 0.68rem;
+
+                    .button__text {
+                        transform: scale(0.98);
+                    }
+
+                    &.v--left {
+                        .button__icon {
+                            transform: scale(1);
+                            margin-left: 0.2rem;
+                        }
+                    }
+
+                    &.v--right {
+                        .button__icon {
+                            transform: scale(1);
+                            margin-right: 0.2rem;
+                        }
+                    }
+                }
+
+                &.button__state--error {
+                    color: darkColor(failColor);
+
+                    &:hover,
+                    &:focus {
+                        color: customButtonColors(tertiaryErrorHoverAndFocus);
+                    }
+
+                    &:focus-visible {
+                        color: customButtonColors(tertiaryErrorHoverAndFocus);
+                        outline: 2px solid customButtonColors(tertiaryErrorHoverAndFocus);
+                        outline-offset: 6px;
+                    }
+
+                    &:active {
+                        color: darkColor(failColor);
+                    }
+                }
+            }
+        }
+
+        .ripple-button {
+            position: relative;
+            overflow: hidden;
+
+            .ripple-span {
+                position: absolute;
+                background-color: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.5s ease-in;
+                z-index: 1;
+            }
+        }
+
+        .ripple-button:not(.awaiting-server-animation) {
+            &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 3;
+                background-color: rgba(0, 0, 0, 0);
+            }
+        }
+
+        &--action-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+
+            & .icon--edit,
+            & .icon--delete {
+                cursor: pointer;
+                color: darkColor(fontColorDisabled);
+                transition: color 150ms ease-in;
+
+                &:hover {
+                    color: darkColor(fontColor);
+                }
+
+                &:active {
+                    color: darkColor(fontColorDisabled);
+                }
+            }
+
+            & .icon--edit {
+                &:hover {
+                    color: darkColor(buttonHover);
+                }
+
+                &:active {
+                    color: customButtonColors(tertiaryPrimaryActive);
+                }
+            }
+
+            & .icon--delete {
+                &:hover {
+                    color: customButtonColors(tertiaryErrorHoverAndFocus);
+                }
+
+                &:active {
+                    color: darkColor(failColor);
+                }
+            }
+        }
+
+        &.multiple-button {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: flex-end;
+            gap: 1.5rem;
+
+            .button__typeof {
+                &--primary {
+                    width: 100%;
+                    flex: 1 1 auto;
+                }
+
+                &--secondary {
+                    width: 100%;
+                    flex: 1 1 auto;
+                }
+            }
+        }
+
+        .awaiting-server-animation {
+            position: relative;
+            // pointer-events: none;
+            &::after {
+                content: " ";
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: 4px solid darkColor(secondaryDarker);
+                border-color: darkColor(secondaryDarker) transparent darkColor(secondaryDarker) transparent;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 100ms ease-in 100ms;
+                animation: awaitingServerAnimation 1s cubic-bezier(0.68, 0.29, 0.39, 0.84) infinite;
+                animation-delay: 230ms;
+            }
+
+            &.awaiting-server-animation-open {
+                .loading-animation-span {
+                    transform: scaleX(0);
+                    opacity: 0 !important;
+                    transition: transform 200ms ease-in, opacity 200ms ease-in !important;
+                }
+
+                &::after {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+            }
+        }
+
+        .loading-animation-span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .button-container {
+        &.multiple-button {
+            flex-direction: row;
+
+            .button__typeof {
+                &--primary {
+                    width: auto;
+                    flex-grow: 0;
+                }
+
+                &--secondary {
+                    width: auto;
+                    flex-grow: 0;
+                }
+            }
+        }
+    }
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4.5);
+        opacity: 0;
+    }
+}
+
+@keyframes awaitingServerAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
